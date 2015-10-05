@@ -21,9 +21,9 @@
         <h1>Angular Reading List of Awesome</h1>
 
         <div class="row" ng-controller="ReadingListController as readingListCtrl">
-            <button class="btn btn-default">Create Review</button>
+            <button class="btn btn-default" ng-click="reviewFormCtrl.showForm = !reviewFormCtrl.showForm">{{reviewFormCtrl.showForm ? 'Cancel' : 'Create a review'}}</button>
             <hr />
-            <review-form ng-show="reviewFormCtrl.showForm"></review-form>
+            <review-form books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="reviewFormCtrl.showForm"></review-form>
             <hr />
             <ul class="list-unstyled col-sm-8">
                 <li class="book row" ng-repeat="book in readingListCtrl.books">
@@ -33,7 +33,7 @@
                     <cite class="text-muted">Written by {{book.author}}</cite>
                     <p>{{book.review}}w</p>
 
-                    <book-genres></book-genres>
+                    <book-genres genres="book.genres"></book-genres>
 
                 </div>
                 </li>
